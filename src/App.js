@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import data from "./assets/data.json";
+
 import JobBoard from "./components/JobBoard";
 
 /**
@@ -7,10 +7,17 @@ import JobBoard from "./components/JobBoard";
  */
 
 function App() {
+  useEffect(() => {
+    fetch("data.json")
+      .then((res) => res.json())
+      .then((data) => {
+        setJobs(data);
+      });
+  }, []);
   const [jobs, setJobs] = useState([]);
-  const [filters, setFilters] = useState(["CSS"]);
+  console.log(jobs);
 
-  useEffect(() => setJobs(data), []);
+  const [filters, setFilters] = useState(["CSS"]);
 
   const filterFunction = ({ role, level, tools, languages }) => {
     if (filters.length === 0) {
@@ -25,7 +32,7 @@ function App() {
     if (languages) {
       tags.push(...languages);
     }
-
+    return filters.every((tag) => tags.includes(tag));
     return tags.some((tag) => filters.includes(tag));
   };
 
@@ -47,8 +54,14 @@ function App() {
   const filteredJobs = jobs.filter(filterFunction);
 
   return (
+    /*Header of App*/
     <>
-      <header className=" flex flex-col bg-green-700 text-white bg-opacity-75 mb-12">
+      <header className="flex flex-wrap bg-green-700 text-white bg-opacity-75 mb-12">
+        {/* Spinning logo  on the banner*/}
+        <img
+          src="images/favicon-32x32.png"
+          className="w-auto animate-spin"
+        ></img>
         <img
           className="w-full"
           src="images/bg-header-desktop.svg"
@@ -56,14 +69,14 @@ function App() {
         />{" "}
         Created by Clinton Emok
       </header>
-      `
+
       <div className="container m-auto ">
         {filters.length > 0 && (
           <div className={`flex  bg-white shadow-md my-16 mx-10 p-6 rounded`}>
             {filters.map((filter) => (
               <span
                 className=" cursor-pointer mr-4 mb-4 rounded font-bold text-green-400 bg-blue-300 bg-opacity-50  p-2
-              transition duration-500 ease-in-out text-green-400 bg-blue-300 bg-opacity-50 hover:bg-black 
+              transition duration-500 ease-in-out text-green-400 bg-blue-300 bg-opacity-50 hover:bg-red-600 hover:text-white
               transform hover:-translate-y-1 hover:scale-200  sm:mb-0"
                 onClick={() => handleFilterClick(filter)}
               >
@@ -73,7 +86,7 @@ function App() {
             <button
               className="text-grey-700 ml-auto font-bold rounded p-1 
             transition duration-500 ease-in-out text-green-400 bg-blue-300 bg-opacity-50 
-            hover:bg-black transform hover:-translate-y-1 hover:scale-200 "
+            hover:bg-red-600 transform hover:-translate-y-1 hover:scale-200  hover:text-white "
               onClick={() => handleClearFilter()}
             >
               Clear

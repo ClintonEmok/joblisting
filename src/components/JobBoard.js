@@ -35,12 +35,15 @@ const JobBoard = ({
     >
       <div>
         <img
+          /*Logo of company */
           className="-mt-16 mb-6 w-20 h-20 lg:mt-0 lg:h-24 lg:w-24 lg:my-0"
           src={logo}
           alt={company}
         />
       </div>
+
       <div className=" flex flex-col justify-between ml-4">
+        {/* Tags for New and Featured */}
         <h3 className="font-bold text-green-400 ">
           {company}
           {isNew && (
@@ -54,6 +57,7 @@ const JobBoard = ({
             </span>
           )}
         </h3>
+        {/* Description of Job  */}
         <h2 className="font-bold text-xl my-2">{position}</h2>
         <p className="text-gray-500 font-medium">
           {postedAt} • {contract} • {location}
@@ -61,16 +65,15 @@ const JobBoard = ({
       </div>
       <div
         className="flex flex-wrap items-center m-4 pt-4 border-t-2 border-gray-400 border-solid 
-                        lg:ml-auto lg:border-0 lg:m-4 lg: pt-0 lg: mt-0 
-                      "
+        lg:ml-auto lg:border-0 lg:m-4 lg: pt-0 lg: mt-0 "
       >
         {tags
           ? tags.map((tag) => (
               <span
                 onClick={() => handleTagClick(tag)}
-                className=" transition duration-500 ease-in-out text-green-400 bg-blue-300 bg-opacity-50 font-bold hover:bg-black transform hover:-translate-y-1 hover:scale-110
-                cursor-pointer mr-4 mb-4 p-2 rounded
-               lg: mb-0 "
+                className=" cursor-pointer transition duration-500 ease-in-out text-green-400 
+              bg-blue-300 bg-opacity-50 font-bold hover:bg-black transform hover:-translate-y-1
+               hover:scale-110cursor-pointer mr-4 mb-4 p-2 rounded lg: mb-0 "
               >
                 {tag}
               </span>

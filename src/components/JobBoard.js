@@ -1,5 +1,8 @@
 import React from "react";
 
+// Defining the contents of data.json so jobs.{} isn't required
+// Also renamed new to isNew as it lead to some issues
+// Made handleTagClick a prop for better usability
 const JobBoard = ({
   job: {
     company,
@@ -30,7 +33,7 @@ const JobBoard = ({
   return (
     <div
       className={`flex flex-col  bg-white shadow-lg my-16 mx-10 p-6 rounded ${
-        featured && " border-l-4 border-green-400 border-solid"
+        featured && " border-l-4 border-gray-800 border-solid"
       } lg:flex-row lg: my-6 lg:mx-0 lg:m-4 `}
     >
       <div>
@@ -67,6 +70,7 @@ const JobBoard = ({
         className="flex flex-wrap items-center m-4 pt-4 border-t-2 border-gray-400 border-solid 
         lg:ml-auto lg:border-0 lg:m-4 lg: pt-0 lg: mt-0 "
       >
+        {/* List of tags related to Job   */}
         {tags
           ? tags.map((tag) => (
               <span

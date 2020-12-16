@@ -25,15 +25,24 @@ function App() {
     }
     const tags = [role, level];
 
+    /** Check if tools are empty or not
+     * If not tools will be added to the list
+     */
     if (tools) {
       tags.push(...tools);
     }
 
+    /** Check if languages are empty or not
+     * If not tools will be added to the list
+     */
+
     if (languages) {
       tags.push(...languages);
     }
-    return filters.every((tag) => tags.includes(tag));
-    return tags.some((tag) => filters.includes(tag));
+    return filters.every((tag) =>
+      tags.includes(tag)
+    ); /** Check if all of the tags can be found in a job listing */
+    //return tags.some((tag) => filters.includes(tag)); /** Check if any of the tags can be found in a job listing */
   };
 
   const handleTagClick = (tag) => {
@@ -51,23 +60,22 @@ function App() {
     return setFilters([]);
   };
 
+  // Array of filtered jobs through selection of tags
   const filteredJobs = jobs.filter(filterFunction);
 
   return (
     /*Header of App*/
     <>
-      <header className="flex flex-wrap bg-green-700 text-white bg-opacity-75 mb-12">
-        {/* Spinning logo  on the banner*/}
+      <header className="flex flex-row items-center justify-between bg-green-700 text-white bg-opacity-75 mb-12 p-2">
+        {/* Spinning logo on the banner*/}
         <img
           src="images/favicon-32x32.png"
-          className="w-auto animate-spin"
+          className="place-self-left animate-pulse ml-1 "
         ></img>
-        <img
-          className="w-full"
-          src="images/bg-header-desktop.svg"
-          alt="bg-image"
-        />{" "}
-        Created by Clinton Emok
+        <p className="place-self-center text-2xl font-semibold  ">Job Picker</p>
+        <p className="place-self-right animate-pulse ">
+          Created by Clinton Emok
+        </p>
       </header>
 
       <div className="container m-auto ">
@@ -93,7 +101,7 @@ function App() {
             </button>
           </div>
         )}
-
+        {/* Text to show fetching of data (especially useful with full dataset)  */}
         {jobs.length === 0 ? (
           <p>Jobs are getting fetched</p>
         ) : (

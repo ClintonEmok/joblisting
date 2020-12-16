@@ -2,6 +2,16 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Requirements
+Nodejs will be required to run my react app so head over to https://nodejs.org/en/ and download the latest stable release. This is all you will need.
+
+Installation
+Clone the repo in your terminal by clicking the green clone or download button at the top right and copyin the url
+In your terminal, type git clone URL
+replace URL with the url you copied hit enter
+This will copy all the files from this repo down to your computer
+
+
 ## Available Scripts
 
 In the project directory, you can run:

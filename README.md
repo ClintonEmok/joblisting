@@ -9,6 +9,7 @@ Nodejs will be required to run my react app so head over to https://nodejs.org/e
 Clone the repo in your terminal by clicking the green clone or download button at the top right and copyin the url\
 In your terminal, type git clone URL replace URL with the url you copied hit enter\
 This will copy all the files from this repo down to your computer\
+Put all the files in a directory of your liking.
 
 
 ## Available Scripts
